@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1554440711 source:c:\users\lion\desktop\tp1_laboratorio_programacion_1\funciones.c
+	<stdio.h>
+	<stdlib.h>
+
+1554489526 source:c:\users\lion\desktop\tp1_laboratorio_programacion_1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+	"utn.h"
+
+1554440648 c:\users\lion\desktop\tp1_laboratorio_programacion_1\funciones.h
+
+1554440739 c:\users\lion\desktop\tp1_laboratorio_programacion_1\utn.h
+
+1554440775 source:c:\users\lion\desktop\tp1_laboratorio_programacion_1\utn.c
+	<stdio.h>
+	<stdlib.h>
+
