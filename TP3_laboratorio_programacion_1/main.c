@@ -37,7 +37,7 @@ int main()
         printf("\n8.Guardar los datos de los empleados en el archivo data.csv (modo texto)");
         printf("\n9.Guardar los datos de los empleados en el archivo data.csv (modo binario)");
         printf("\n10.Salir");
-
+        __fpurge(stdin);
         if(!utn_getInt("\nOpcion:","\nOpcion no valida",1,10,2,&option))
         {
 			switch(option)

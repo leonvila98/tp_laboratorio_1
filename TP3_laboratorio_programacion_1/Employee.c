@@ -50,7 +50,7 @@ void employee_delete(Employee* this)
 int employee_setId(Employee* this,int id)
 {
 	int retorno = -1;
-    if(this != NULL)
+    if(this != NULL && !isValidInt(id,10000,0))
     {
         this->id = id;
         retorno = 0;
@@ -72,7 +72,7 @@ int employee_getId(Employee* this,int* id)
 int employee_setNombre(Employee* this,char* nombre)
 {
 	int retorno = -1;
-    if(this != NULL)
+    if(this != NULL && !isValidName(nombre))
     {
         strncpy(this->nombre,nombre,sizeof(this->nombre));
         retorno = 0;
@@ -96,7 +96,7 @@ int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
 	int retorno = -1;
     if(this != NULL)
     {
-        horasTrabajadas = this->horasTrabajadas;
+        this->horasTrabajadas=horasTrabajadas;
         retorno = 0;
     }
     return retorno;
@@ -118,7 +118,7 @@ int employee_setSueldo(Employee* this,int sueldo)
 	int retorno = -1;
     if(this != NULL)
     {
-        sueldo = this->sueldo;
+        this->sueldo=sueldo;
         retorno = 0;
     }
     return retorno;

@@ -76,6 +76,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
+
     return 1;
 }
 
@@ -109,7 +110,10 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 		employee_getNombre(pAux,bufferNombre);
 		employee_getHorasTrabajadas(pAux,&bufferHoras);
 		employee_getSueldo(pAux,&bufferSueldo);
-		printf("ID:%d\nNombre:%s\nHoras:%d\nSueldo:%d\n",bufferId,bufferNombre,bufferHoras,bufferSueldo);
+		printf("\nID:%d\nNombre:%s\nHoras:%d\nSueldo:%d\n", bufferId,
+                                                            bufferNombre,
+                                                            bufferHoras,
+                                                            bufferSueldo);
     }
     return retorno;
 }

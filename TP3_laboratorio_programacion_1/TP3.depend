@@ -102,3 +102,52 @@
 
 1533133022 /home/alumno/Documentos/leonvila/TP3_laboratorio_programacion_1/parser.h
 
+1559843612 source:/home/leon/Documentos/tp_laboratorio_1/TP3_laboratorio_programacion_1/Controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+	"utn.h"
+
+1559843258 /home/leon/Documentos/tp_laboratorio_1/TP3_laboratorio_programacion_1/LinkedList.h
+
+1559843258 /home/leon/Documentos/tp_laboratorio_1/TP3_laboratorio_programacion_1/Employee.h
+
+1559843258 /home/leon/Documentos/tp_laboratorio_1/TP3_laboratorio_programacion_1/parser.h
+
+1559843258 /home/leon/Documentos/tp_laboratorio_1/TP3_laboratorio_programacion_1/utn.h
+
+1559844333 source:/home/leon/Documentos/tp_laboratorio_1/TP3_laboratorio_programacion_1/Employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+	"utn.h"
+
+1559844389 source:/home/leon/Documentos/tp_laboratorio_1/TP3_laboratorio_programacion_1/main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"utn.h"
+
+1559843258 /home/leon/Documentos/tp_laboratorio_1/TP3_laboratorio_programacion_1/Controller.h
+
+1559843354 source:/home/leon/Documentos/tp_laboratorio_1/TP3_laboratorio_programacion_1/parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+	"utn.h"
+
+1559844433 source:/home/leon/Documentos/tp_laboratorio_1/TP3_laboratorio_programacion_1/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+

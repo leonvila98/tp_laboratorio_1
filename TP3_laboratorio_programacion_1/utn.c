@@ -85,14 +85,18 @@ int utn_getName(char* msg, char* msgError, int min, int max, int reintentos, cha
 
 int isValidName(char* stringRecibido)   //si fuera un numero podrìa necesitar parametros para validar max y min
 {
-    int retorno=1;  // para las funciones isValid arranco con verdadero y cambio cuando encuentro un error
+    int retorno;  // para las funciones isValid arranco con verdadero y cambio cuando encuentro un error
     int i;
     for(i=0;stringRecibido[i]!='\0';i++)
     {
         //printf("%d",i);
-        if((stringRecibido[i]>='A' && stringRecibido[i]<='Z') && (stringRecibido[i]>='a' && stringRecibido[i]<='z'))// o ((stringRecibido[i]<'A' || (stringRecibido[i]>'Z') && (stringRecibido[i]<'a' || stringRecibido[i]>'z'))
+        if((stringRecibido[i]>='A' && stringRecibido[i]<='Z') || (stringRecibido[i]>='a' && stringRecibido[i]<='z'))
         {
             retorno=0;
+        }
+        else
+        {
+            retorno=-1;
             break;
         }
     }
@@ -132,13 +136,13 @@ int utn_getUnsignedInt(  char* msg,char* msgError,int minSize,int maxSize,int mi
 
 int isValidNumber(char* stringRecibido)
 {
-    int retorno=1;  // para las funciones isValid arranco con verdadero y cambio cuando encuentro un error
+    int retorno=0;  // para las funciones isValid arranco con verdadero y cambio cuando encuentro un error
     int i;
     for(i=0;stringRecibido[i]!='\0';i++)
     {
-        if(stringRecibido[i]>='0' && stringRecibido[i]<='9')
+        if(stringRecibido[i]<'0' || stringRecibido[i]>'9')
         {
-            retorno=0;
+            retorno=1;
             break;
         }
     }
@@ -149,9 +153,9 @@ int isValidInt(int numero,int max,int min)
 {
     if(numero<=max && numero>=min)
     {
-        return 1;
+        return 0;
     }
-    return 0;
+    return 1;
 }
 
 int utn_getInt(char *mensaje,char *mensajeError,int minimo,
@@ -167,7 +171,7 @@ int utn_getInt(char *mensaje,char *mensajeError,int minimo,
             printf("%s",mensaje);
             __fpurge(stdin);
             scanf("%d",&buffer);
-            if(isValidInt(buffer,maximo,minimo))
+            if(!isValidInt(buffer,maximo,minimo))
             {
                 *resultado=buffer;
                 retorno=0;
