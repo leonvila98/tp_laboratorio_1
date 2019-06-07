@@ -44,31 +44,43 @@ int main()
 			{
 				case 1:
 				{
+					printf("\nCargar datos");
 					controller_loadFromText("data.csv",listaEmpleados);
 					break;
 				}
 				case 2:
 				{
-
+					controller_loadFromBinary("data.bin",listaEmpleados);
 					break;
 				}
 				case 3:
 				{
-
+					printf("\nModificar datos de empleado");
+					controller_addEmployee(listaEmpleados);
+					aux=ll_len(listaEmpleados);
+					printf("\nLEN:%d",aux);
 					break;
 				}
 				case 4:
 				{
-
-					break;
+					if(!controller_editEmployee(listaEmpleados))
+					{
+						break;
+					}
+					else
+					{
+						printf("\nERROR");
+						break;
+					}
 				}
 				case 5:
 				{
-
+					controller_saveAsBinary("data.bin",listaEmpleados);
 					break;
 				}
 				case 6:
 				{
+                    printf("\nListar empleados");
                     if(!controller_ListEmployee(listaEmpleados))
                     {
 						break;
@@ -76,6 +88,7 @@ int main()
 					else
 					{
 						printf("\nGG");
+						break;
 					}
 				}
 				case 7:

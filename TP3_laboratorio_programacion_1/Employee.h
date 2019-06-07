@@ -6,6 +6,7 @@ typedef struct
     char nombre[128];
     int horasTrabajadas;
     int sueldo;
+    int estado;//0.INACTIVO-1.ACTIVO
 }Employee;
 
 Employee* employee_new(void);
@@ -27,6 +28,14 @@ int employee_setSueldo(Employee* this,int sueldo);
 int employee_setSueldoStr(Employee* this, char* sueldo);
 int employee_getSueldo(Employee* this,int* sueldo);
 
+int employee_setEstado(Employee* this,int estado);
+int employee_getEstado(Employee* this,int* estado);
+
+int employee_getIdMax(LinkedList* pArray);
+
+int employee_getEmpById(LinkedList* pArray,int id,Employee* result);
+
+int employee_compararPorNombre(void* this1,void* this2);
 
 
 #endif // employee_H_INCLUDED

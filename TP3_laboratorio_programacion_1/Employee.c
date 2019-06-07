@@ -26,7 +26,8 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 			if(	!employee_setIdStr(pAuxEmployee,idStr) &&
 				!employee_setNombre(pAuxEmployee,nombreStr) &&
 				!employee_setHorasTrabajadasStr(pAuxEmployee,horasTrabajadasStr) &&
-				!employee_setSueldoStr(pAuxEmployee,sueldoStr))
+				!employee_setSueldoStr(pAuxEmployee,sueldoStr) &&
+				!employee_setEstado(pAuxEmployee,0))
 			{
 				retorno=pAuxEmployee;
 			}
@@ -135,6 +136,28 @@ int employee_getSueldo(Employee* this,int* sueldo)
     return retorno;
 }
 
+int employee_setEstado(Employee* this,int estado)
+{
+	int retorno = -1;
+    if(this != NULL && !isValidInt(estado,1,0))
+    {
+        this->estado = estado;
+        retorno = 0;
+    }
+    return retorno;
+}
+
+int employee_getEstado(Employee* this,int* estado)
+{
+	int retorno = -1;
+    if(this != NULL && estado != NULL)
+    {
+        *estado = this->estado;
+        retorno = 0;
+    }
+    return retorno;
+}
+
 int employee_setIdStr(Employee* this, char* id)
 {
     int retorno = -1;
@@ -164,3 +187,63 @@ int employee_setSueldoStr(Employee* this, char* sueldo)
     }
     return retorno;
 }
+
+int employee_getIdMax(LinkedList* pArray)
+{
+	int i;
+	int id;
+	int max;
+	int flag=0;
+	Employee* pAux;
+	if(pArray!=NULL)
+	{
+		for(i=0;i<ll_len(pArray);i++)
+		{
+			pAux=ll_get(pArray,i);
+			employee_getId(pAux,&id);
+			if(flag==0 || id>max)
+			{
+				max=id;
+				flag=1;
+			}
+		}
+	}
+	return max;
+}
+
+int employee_getEmpById(LinkedList* pArray,int id,Employee* result)
+{
+	int i;
+	int bufferId;
+	int retorno=-1;
+
+	if(pArray!=NULL)
+	{
+		for(i=0;i<ll_len(pArray);i++)
+		{
+			result=ll_get(pArray,i);
+			employee_getId(result,&bufferId);
+			if(id==bufferId)
+			{
+				retorno=0;
+			}
+		}
+	}
+	return retorno;
+}
+
+int employee_compararPorNombre(void* this1,void* this2)//recibe dos void
+{
+	char bufferA[4096];
+	char bufferB[4096];
+
+	employee_getNombre((Employee*)this1,bufferA);
+	employee_getNombre((Employee*)this2,bufferB);
+	if(strcmp(bufferA,bufferB)>0)
+		return 1;
+	else if(strcmp(bufferA,bufferB)>0)
+		return -1;
+	return 0;
+}
+
+//int fun(int indice,int (*pFun) (void*,void*),float peso)

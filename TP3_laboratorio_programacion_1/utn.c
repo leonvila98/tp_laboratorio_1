@@ -65,7 +65,7 @@ int utn_getName(char* msg, char* msgError, int min, int max, int reintentos, cha
         {
             if(!getString(msg,msgError,min,max,&reintentos,bufferStr)) //==0
             {
-                if(isValidName(bufferStr)==1)
+                if(!isValidName(bufferStr))
                 {
                     strncpy(resultado,bufferStr,max);
                     retorno=0;
@@ -90,7 +90,10 @@ int isValidName(char* stringRecibido)   //si fuera un numero podrìa necesitar p
     for(i=0;stringRecibido[i]!='\0';i++)
     {
         //printf("%d",i);
-        if((stringRecibido[i]>='A' && stringRecibido[i]<='Z') || (stringRecibido[i]>='a' && stringRecibido[i]<='z'))
+        if(	(stringRecibido[i]>='A' && stringRecibido[i]<='Z') ||
+			(stringRecibido[i]>='a' && stringRecibido[i]<='z') ||
+			(stringRecibido[i]==' ') ||
+			(stringRecibido[i]=='-'))
         {
             retorno=0;
         }
@@ -119,6 +122,36 @@ int utn_getUnsignedInt(  char* msg,char* msgError,int minSize,int maxSize,int mi
                 if(isValidNumber(bufferStr)==1)
                 {
                     *input=atoi(bufferStr);     // unsigned long int strtoul(const char *str, char **end, int base)?
+                    retorno=0;
+                    break;
+                }
+                else
+                {
+                    printf("%s 2",msgError);
+                    reintentos--;
+                }
+            }
+        }
+        while(reintentos>=0);
+    }
+    return retorno;
+}
+
+int utn_getIntStr(char* msg,char* msgError,int minSize,int maxSize,int min,int max,int reintentos,char* resultado)
+{
+    int retorno=-1;
+    char bufferStr[maxSize];
+    __fpurge(stdin);
+
+    if(msg!=NULL && msgError!=NULL && minSize<maxSize && min<max && reintentos>=0 && resultado!=NULL)
+    {
+        do
+        {
+            if(!getString(msg,msgError,minSize,maxSize,&reintentos,bufferStr)) //==0 sin errores !0
+            {
+                if(!isValidNumber(bufferStr))
+                {
+					strncpy(resultado,bufferStr,maxSize);
                     retorno=0;
                     break;
                 }

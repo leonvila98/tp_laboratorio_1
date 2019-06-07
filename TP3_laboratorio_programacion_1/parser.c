@@ -29,7 +29,6 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 		while(!feof(pFile))
 		{
 			fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
-			printf("Horas:%s\n",bufferHorasTrabajadas);
             pAux=employee_newParametros(bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
             if(pAux!=NULL)
             {

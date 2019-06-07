@@ -151,3 +151,52 @@
 	<string.h>
 	"utn.h"
 
+1559869706 source:/home/alumno/Documentos/leonvila/tp_laboratorio_1/TP3_laboratorio_programacion_1/Employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+	"utn.h"
+
+1559856705 /home/alumno/Documentos/leonvila/tp_laboratorio_1/TP3_laboratorio_programacion_1/LinkedList.h
+
+1559868287 /home/alumno/Documentos/leonvila/tp_laboratorio_1/TP3_laboratorio_programacion_1/Employee.h
+
+1559858444 /home/alumno/Documentos/leonvila/tp_laboratorio_1/TP3_laboratorio_programacion_1/utn.h
+
+1559868251 source:/home/alumno/Documentos/leonvila/tp_laboratorio_1/TP3_laboratorio_programacion_1/main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"utn.h"
+
+1559856705 /home/alumno/Documentos/leonvila/tp_laboratorio_1/TP3_laboratorio_programacion_1/Controller.h
+
+1559857305 source:/home/alumno/Documentos/leonvila/tp_laboratorio_1/TP3_laboratorio_programacion_1/parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+	"utn.h"
+
+1559861548 source:/home/alumno/Documentos/leonvila/tp_laboratorio_1/TP3_laboratorio_programacion_1/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1559869836 source:/home/alumno/Documentos/leonvila/tp_laboratorio_1/TP3_laboratorio_programacion_1/Controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+	"utn.h"
+
+1559856705 /home/alumno/Documentos/leonvila/tp_laboratorio_1/TP3_laboratorio_programacion_1/parser.h
+
