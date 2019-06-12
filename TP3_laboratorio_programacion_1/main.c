@@ -23,7 +23,6 @@
 int main()
 {
     int option = 0;
-    int aux;
     LinkedList* listaEmpleados = ll_newLinkedList();
     do{
         printf("\n-----------------------------------------------");
@@ -44,38 +43,62 @@ int main()
 			{
 				case 1:
 				{
-					printf("\nCargar datos");
+					printf("\nCargar datos de texto");
 					controller_loadFromText("data.csv",listaEmpleados);
 					break;
 				}
 				case 2:
 				{
-					controller_loadFromBinary("data.bin",listaEmpleados);
+					printf("\nCargar datos de binario");
+					if(!controller_loadFromBinary("data.bin",listaEmpleados))
+                    {
+                        printf("\nCargado con exito");
+                        printf("\nLEN:%d",ll_len(listaEmpleados));
+                    }
+                    else
+                    {
+                        printf("\nError al cargar");
+                    }
 					break;
 				}
 				case 3:
 				{
-					printf("\nModificar datos de empleado");
-					controller_addEmployee(listaEmpleados);
-					aux=ll_len(listaEmpleados);
-					printf("\nLEN:%d",aux);
+                    printf("\nAlta de empleado");
+                    if(!controller_addEmployee(listaEmpleados))
+					{
+						printf("\nEmpleado agregado con exito");
+					}
+					else
+					{
+						printf("\nError al agregar empleado");
+					}
 					break;
 				}
 				case 4:
 				{
+					printf("\nModificar empleado");
 					if(!controller_editEmployee(listaEmpleados))
 					{
-						break;
+						printf("\nEmpleado modificado con exito");
 					}
 					else
 					{
-						printf("\nERROR");
-						break;
+						printf("\nError al modificar");
 					}
+					break;
 				}
 				case 5:
 				{
-					controller_saveAsBinary("data.bin",listaEmpleados);
+                    printf("\nBaja de empleado");
+                    if(!controller_removeEmployee(listaEmpleados))
+                    {
+                        printf("\nEmpleado eliminado con exito");
+                    }
+                    else
+                    {
+                        printf("\nError al eliminar");
+                    }
+					break;
 					break;
 				}
 				case 6:
@@ -83,17 +106,25 @@ int main()
                     printf("\nListar empleados");
                     if(!controller_ListEmployee(listaEmpleados))
                     {
-						break;
+						printf("\nLista completa");
                     }
 					else
 					{
-						printf("\nGG");
-						break;
+						printf("\nError");
 					}
+					break;
 				}
 				case 7:
 				{
-
+                    printf("\nListar empleados");
+                    if(!controller_sortEmployee(listaEmpleados))
+                    {
+						printf("\nOrdenados con exito");
+                    }
+					else
+					{
+						printf("\nError al ordenar");
+					}
 					break;
 				}
 				case 8:
@@ -103,7 +134,15 @@ int main()
 				}
 				case 9:
 				{
-
+                    printf("\nGuardar en binario");
+                    if(!controller_saveAsBinary("data.bin",listaEmpleados))
+                    {
+                        printf("\nGuardado con exito");
+                    }
+                    else
+                    {
+                        printf("\nError al guardar");
+                    }
 					break;
 				}
 			}

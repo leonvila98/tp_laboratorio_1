@@ -11,6 +11,7 @@ typedef struct
 
 Employee* employee_new(void);
 Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldo);
+int employee_newByStruct(LinkedList* lista,Employee emp);
 void employee_delete(Employee* this);
 
 int employee_setId(Employee* this,int id);
@@ -33,7 +34,7 @@ int employee_getEstado(Employee* this,int* estado);
 
 int employee_getIdMax(LinkedList* pArray);
 
-int employee_getEmpById(LinkedList* pArray,int id,Employee* result);
+int employee_getEmpById(LinkedList* pArray,int id,int* indice);
 
 int employee_compararPorNombre(void* this1,void* this2);
 

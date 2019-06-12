@@ -40,6 +40,27 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 	return retorno;
 }
 
+int employee_newByStruct(LinkedList* lista,Employee emp)
+{
+    Employee* pEmp;
+    int retorno=-1;
+
+    pEmp=employee_new();
+    if(	!employee_setNombre(pEmp,emp.nombre)&&
+        !employee_setId(pEmp,emp.id)&&
+        !employee_setHorasTrabajadas(pEmp,emp.horasTrabajadas)&&
+        !employee_setSueldo(pEmp,emp.sueldo))
+    {
+        ll_add(lista,pEmp);
+        retorno=0;
+    }
+    else
+    {
+        employee_delete(pEmp);
+    }
+    return retorno;
+}
+
 void employee_delete(Employee* this)
 {
     if(this != NULL)
@@ -211,9 +232,10 @@ int employee_getIdMax(LinkedList* pArray)
 	return max;
 }
 
-int employee_getEmpById(LinkedList* pArray,int id,Employee* result)
+int employee_getEmpById(LinkedList* pArray,int id,int* indice)
 {
 	int i;
+	Employee* pAuxEmp;
 	int bufferId;
 	int retorno=-1;
 
@@ -221,12 +243,16 @@ int employee_getEmpById(LinkedList* pArray,int id,Employee* result)
 	{
 		for(i=0;i<ll_len(pArray);i++)
 		{
-			result=ll_get(pArray,i);
-			employee_getId(result,&bufferId);
-			if(id==bufferId)
-			{
-				retorno=0;
-			}
+			pAuxEmp=ll_get(pArray,i);
+			if(!employee_getId(pAuxEmp,&bufferId))
+            {
+                if(id==bufferId)
+                {
+                    *indice=i;
+                    retorno=0;
+                    break;
+                }
+            }
 		}
 	}
 	return retorno;
