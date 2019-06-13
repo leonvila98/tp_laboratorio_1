@@ -31,7 +31,7 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
     return retorno;
 }
 
-/** \brief Carga los datos de los empleados desde el archivo data.csv (modo binario).
+/** \brief Carga los datos de los empleados desde el archivo data.bin (modo binario).
  *
  * \param path char*
  * \param pArrayListEmployee LinkedList*
@@ -75,6 +75,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     char bufferHoras[128];
     char bufferSueldo[128];
     char bufferId[128];
+    int retorno=-1;
     int id;
     Employee* pAux;
 
@@ -88,10 +89,11 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
 			sprintf(bufferId,"%d",id+1);
 			pAux=employee_newParametros(bufferId,bufferName,bufferHoras,bufferSueldo);
 			ll_add(pArrayListEmployee,pAux);
+			retorno=0;
 		}
 
     }
-    return 1;
+    return retorno;
 }
 
 /** \brief Modificar datos de empleado
@@ -228,10 +230,16 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 {
-    int i;
-	Employee* pEmp=NULL;
-	FILE* pFile=NULL;
+    char bufferId[128];
+    char bufferNombre[128];
+    char bufferHoras[128];
+    char bufferSueldo[128];
     int retorno=-1;
+    int i;
+
+	Employee* pAux=NULL;
+	FILE* pFile=NULL;
+
     if(path!=NULL && pArrayListEmployee!=NULL)
     {
 		pFile=fopen(path,"w");
@@ -239,9 +247,19 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 		{
 			for(i=0;i<ll_len(pArrayListEmployee);i++)
             {
-                pEmp=ll_get(pArrayListEmployee,i);
-				fwrite(pEmp,sizeof(Employee),1,pFile);
-				retorno=0;
+                pAux=ll_get(pArrayListEmployee,i);
+                if(	pAux !=NULL &&
+                    !employee_getIdStr(pAux,bufferId) &&
+                    !employee_getNombre(pAux,bufferNombre) &&
+                    !employee_getHorasStr(pAux,bufferHoras) &&
+                    !employee_getSueldoStr(pAux,bufferSueldo))
+                {
+                    fprintf(pFile,"%s,%s,%s,%s\n",  bufferId,
+                                                    bufferNombre,
+                                                    bufferHoras,
+                                                    bufferSueldo);
+                    retorno=0;
+                }
             }
 		}
     }
@@ -249,7 +267,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
     return retorno;
 }
 
-/** \brief Guarda los datos de los empleados en el archivo data.csv (modo binario).
+/** \brief Guarda los datos de los empleados en el archivo data.bin (modo binario).
  *
  * \param path char*
  * \param pArrayListEmployee LinkedList*

@@ -5,11 +5,27 @@
 #include "Employee.h"
 #include "utn.h"
 
+/** \brief Crea un espacio de memoria con espacio para un Employee.
+ *
+ * \param void
+ * \return Employee* Puntero a la primera posicion del espacio de memoria creado.
+ *
+ */
 Employee* employee_new(void)
 {
 	return (Employee*) malloc(sizeof(Employee));
 }
 
+/** \brief Crea un espacio de memoria con espacio para un Employee y lo crea mediante
+ *         los parametros pasados.
+ *
+ * \param char* id (del Employee a crear).
+ * \param char* nombre (del Employee a crear).
+ * \param char* horas trabajadas (del Employee a crear).
+ * \param char* sueldo (del Employee a crear).
+ * \return Employee* Puntero a la primera posicion del espacio de memoria creado.
+ *
+ */
 Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr)
 {
 	Employee* retorno=NULL;
@@ -40,6 +56,14 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 	return retorno;
 }
 
+/** \brief Crea un espacio de memoria con espacio para un Employee, lo crea
+ *         mediante la estructrura pasada y lo guarda en una LinkedList.
+ *
+ * \param LinkedList* lista (LinkedList a guardar el Employee creado).
+ * \param Employee emp (Employee a guardar en la LinkedList).
+ * \return Int retorno (0-Pudo crear y guardar el Employee)((-1)-No pudo crear o guardar el Employee).
+ *
+ */
 int employee_newByStruct(LinkedList* lista,Employee emp)
 {
     Employee* pEmp;
@@ -61,6 +85,12 @@ int employee_newByStruct(LinkedList* lista,Employee emp)
     return retorno;
 }
 
+/** \brief Libera el espacio en memoria ocupado por un Employee(Delete).
+ *
+ * \param void
+ * \return Employee* Puntero a la primera posicion del espacio de memoria creado.
+ *
+ */
 void employee_delete(Employee* this)
 {
     if(this != NULL)
@@ -69,6 +99,13 @@ void employee_delete(Employee* this)
     }
 }
 
+/** \brief Set del id en un Employee.
+ *
+ * \param Employee* Puntero del Employee
+ * \param int id del Employee
+ * \return int retorno (0-Pudo hacer el set)((-1)-No pudo hacer el set).
+ *
+ */
 int employee_setId(Employee* this,int id)
 {
 	int retorno = -1;
@@ -80,6 +117,13 @@ int employee_setId(Employee* this,int id)
     return retorno;
 }
 
+/** \brief Obtiene el id de un Employee.
+ *
+ * \param Employee* Puntero del Employee
+ * \param int* id del Employee
+ * \return int retorno (0-Pudo obtener)((-1)-No pudo obtener).
+ *
+ */
 int employee_getId(Employee* this,int* id)
 {
 	int retorno = -1;
@@ -91,6 +135,13 @@ int employee_getId(Employee* this,int* id)
     return retorno;
 }
 
+/** \brief Set del nombre en un Employee.
+ *
+ * \param Employee* Puntero del Employee
+ * \param char* nombre del Employee
+ * \return int retorno (0-Pudo hacer el set)((-1)-No pudo hacer el set).
+ *
+ */
 int employee_setNombre(Employee* this,char* nombre)
 {
 	int retorno = -1;
@@ -102,6 +153,13 @@ int employee_setNombre(Employee* this,char* nombre)
     return retorno;
 }
 
+/** \brief Obtiene el nombre de un Employee.
+ *
+ * \param Employee* Puntero del Employee
+ * \param char* nombre del Employee
+ * \return int retorno (0-Pudo obtener)((-1)-No pudo obtener).
+ *
+ */
 int employee_getNombre(Employee* this,char* nombre)
 {
 	int retorno = -1;
@@ -113,6 +171,13 @@ int employee_getNombre(Employee* this,char* nombre)
     return retorno;
 }
 
+/** \brief Set de horas trabajadas en un Employee.
+ *
+ * \param Employee* Puntero del Employee
+ * \param int horas trabajadas del Employee
+ * \return int retorno (0-Pudo hacer el set)((-1)-No pudo hacer el set).
+ *
+ */
 int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
 {
 	int retorno = -1;
@@ -124,6 +189,13 @@ int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
     return retorno;
 }
 
+/** \brief Obtiene horas trabajadas de un Employee.
+ *
+ * \param Employee* Puntero del Employee
+ * \param int* horasTrabajadas del Employee
+ * \return int retorno (0-Pudo obtener)((-1)-No pudo obtener).
+ *
+ */
 int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas)
 {
 	int retorno = -1;
@@ -135,6 +207,13 @@ int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas)
     return retorno;
 }
 
+/** \brief Set del sueldo en un Employee.
+ *
+ * \param Employee* Puntero del Employee
+ * \param int sueldo del Employee
+ * \return int retorno (0-Pudo hacer el set)((-1)-No pudo hacer el set).
+ *
+ */
 int employee_setSueldo(Employee* this,int sueldo)
 {
 	int retorno = -1;
@@ -146,6 +225,13 @@ int employee_setSueldo(Employee* this,int sueldo)
     return retorno;
 }
 
+/** \brief Obtiene el sueldo de un Employee.
+ *
+ * \param Employee* Puntero del Employee
+ * \param int* sueldo del Employee
+ * \return int retorno (0-Pudo obtener)((-1)-No pudo obtener).
+ *
+ */
 int employee_getSueldo(Employee* this,int* sueldo)
 {
 	int retorno = -1;
@@ -157,6 +243,13 @@ int employee_getSueldo(Employee* this,int* sueldo)
     return retorno;
 }
 
+/** \brief Set del estado en un Employee.
+ *
+ * \param Employee* Puntero del Employee
+ * \param int estado del Employee
+ * \return int retorno (0-Pudo hacer el set)((-1)-No pudo hacer el set).
+ *
+ */
 int employee_setEstado(Employee* this,int estado)
 {
 	int retorno = -1;
@@ -168,6 +261,13 @@ int employee_setEstado(Employee* this,int estado)
     return retorno;
 }
 
+/** \brief Obtiene el estado de un Employee.
+ *
+ * \param Employee* Puntero del Employee
+ * \param int* estado del Employee
+ * \return int retorno (0-Pudo obtener)((-1)-No pudo obtener).
+ *
+ */
 int employee_getEstado(Employee* this,int* estado)
 {
 	int retorno = -1;
@@ -179,6 +279,13 @@ int employee_getEstado(Employee* this,int* estado)
     return retorno;
 }
 
+/** \brief Set del id en string en un Employee.
+ *
+ * \param Employee* Puntero del Employee
+ * \param char* id del Employee
+ * \return int retorno (0-Pudo hacer el set)((-1)-No pudo hacer el set).
+ *
+ */
 int employee_setIdStr(Employee* this, char* id)
 {
     int retorno = -1;
@@ -189,6 +296,33 @@ int employee_setIdStr(Employee* this, char* id)
     return retorno;
 }
 
+/** \brief Obtiene el id en string de un Employee.
+ *
+ * \param Employee* Puntero del Employee
+ * \param char* id del Employee
+ * \return int retorno (0-Pudo obtener)((-1)-No pudo obtener).
+ *
+ */
+int employee_getIdStr(Employee* this, char* id)
+{
+    int retorno = -1;
+    int bufferInt;
+    if(this != NULL && id != NULL)
+    {
+        employee_getId(this,&bufferInt);
+        sprintf(id,"%d",bufferInt);
+        retorno = 0;
+    }
+    return retorno;
+}
+
+/** \brief Set de horas trabajadas en string en un Employee.
+ *
+ * \param Employee* Puntero del Employee
+ * \param char* horasTrabajadas del Employee
+ * \return int retorno (0-Pudo hacer el set)((-1)-No pudo hacer el set).
+ *
+ */
 int employee_setHorasTrabajadasStr(Employee* this, char* horasTrabajadas)
 {
     int retorno = -1;
@@ -199,6 +333,33 @@ int employee_setHorasTrabajadasStr(Employee* this, char* horasTrabajadas)
     return retorno;
 }
 
+/** \brief Obtiene horas trabajadas en string de un Employee.
+ *
+ * \param Employee* Puntero del Employee
+ * \param char* horas del Employee
+ * \return int retorno (0-Pudo obtener)((-1)-No pudo obtener).
+ *
+ */
+int employee_getHorasStr(Employee* this, char* horas)
+{
+    int retorno = -1;
+    int bufferInt;
+    if(this != NULL && horas != NULL)
+    {
+        employee_getHorasTrabajadas(this,&bufferInt);
+        sprintf(horas,"%d",bufferInt);
+        retorno = 0;
+    }
+    return retorno;
+}
+
+/** \brief Set del sueldo en string en un Employee.
+ *
+ * \param Employee* Puntero del Employee
+ * \param char* sueldo del Employee
+ * \return int retorno (0-Pudo hacer el set)((-1)-No pudo hacer el set).
+ *
+ */
 int employee_setSueldoStr(Employee* this, char* sueldo)
 {
     int retorno = -1;
@@ -209,6 +370,32 @@ int employee_setSueldoStr(Employee* this, char* sueldo)
     return retorno;
 }
 
+/** \brief Obtiene el sueldo en string de un Employee.
+ *
+ * \param Employee* Puntero del Employee
+ * \param char* sueldo del Employee
+ * \return int retorno (0-Pudo obtener)((-1)-No pudo obtener).
+ *
+ */
+int employee_getSueldoStr(Employee* this, char* sueldo)
+{
+    int retorno = -1;
+    int bufferInt;
+    if(this != NULL && sueldo != NULL)
+    {
+        employee_getSueldo(this,&bufferInt);
+        sprintf(sueldo,"%d",bufferInt);
+        retorno = 0;
+    }
+    return retorno;
+}
+
+/** \brief Obtiene el id maximo de un Employee en una LinkedList.
+ *
+ * \param LinkedList* pArray .
+ * \return int max retorna el id mas grande.
+ *
+ */
 int employee_getIdMax(LinkedList* pArray)
 {
 	int i;
@@ -232,6 +419,14 @@ int employee_getIdMax(LinkedList* pArray)
 	return max;
 }
 
+/** \brief Obtiene el indice de un Empleado mediante su id.
+ *
+ * \param LinkedList* pArray.
+ * \param int id del Employee
+ * \param int* indice del Employee buscado.
+ * \return int retorno (0-Si lo encontro)((-1)-No lo encontro).
+ *
+ */
 int employee_getEmpById(LinkedList* pArray,int id,int* indice)
 {
 	int i;
@@ -258,6 +453,14 @@ int employee_getEmpById(LinkedList* pArray,int id,int* indice)
 	return retorno;
 }
 
+/** \brief Compara por nombre dos Employee.
+ *
+ * \param void* this1.
+ * \param void* this2.
+ * \return int retorno (0-Si son iguales)(1-si this1 es mas grande que this2)
+ *                      ((-1)-si this1 es mas chico que this2).
+ *
+ */
 int employee_compararPorNombre(void* this1,void* this2)//recibe dos void
 {
 	char bufferA[4096];
@@ -267,7 +470,7 @@ int employee_compararPorNombre(void* this1,void* this2)//recibe dos void
 	employee_getNombre((Employee*)this2,bufferB);
 	if(strcmp(bufferA,bufferB)>0)
 		return 1;
-	else if(strcmp(bufferA,bufferB)>0)
+	else if(strcmp(bufferA,bufferB)<0)
 		return -1;
 	return 0;
 }

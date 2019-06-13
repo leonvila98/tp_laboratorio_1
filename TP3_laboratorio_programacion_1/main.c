@@ -8,14 +8,14 @@
 /****************************************************
     Menu:
      1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).
-     2. Cargar los datos de los empleados desde el archivo data.csv (modo binario).
+     2. Cargar los datos de los empleados desde el archivo data.bin (modo binario).
      3. Alta de empleado
      4. Modificar datos de empleado
      5. Baja de empleado
      6. Listar empleados
      7. Ordenar empleados
      8. Guardar los datos de los empleados en el archivo data.csv (modo texto).
-     9. Guardar los datos de los empleados en el archivo data.csv (modo binario).
+     9. Guardar los datos de los empleados en el archivo data.bin (modo binario).
     10. Salir
 *****************************************************/
 
@@ -27,14 +27,14 @@ int main()
     do{
         printf("\n-----------------------------------------------");
         printf("\n1.Cargar los datos de los empleados desde el archivo data.csv (modo texto)");
-        printf("\n2.Cargar los datos de los empleados desde el archivo data.csv (modo binario)");
+        printf("\n2.Cargar los datos de los empleados desde el archivo data.bin (modo binario)");
         printf("\n3.Alta de empleado");
         printf("\n4.Modificar datos de empleado");
         printf("\n5.Baja de empleado");
         printf("\n6.Listar empleados");
         printf("\n7.Ordenar empleados");
         printf("\n8.Guardar los datos de los empleados en el archivo data.csv (modo texto)");
-        printf("\n9.Guardar los datos de los empleados en el archivo data.csv (modo binario)");
+        printf("\n9.Guardar los datos de los empleados en el archivo data.bin (modo binario)");
         printf("\n10.Salir");
         __fpurge(stdin);
         if(!utn_getInt("\nOpcion:","\nOpcion no valida",1,10,2,&option))
@@ -129,7 +129,16 @@ int main()
 				}
 				case 8:
 				{
-
+                    printf("\nGuardar como texto");
+                    if(!controller_saveAsText("data.csv",listaEmpleados))
+                    {
+						printf("\nGuardado con exito");
+                    }
+					else
+					{
+						printf("\nError al guardar");
+					}
+					break;
 					break;
 				}
 				case 9:
