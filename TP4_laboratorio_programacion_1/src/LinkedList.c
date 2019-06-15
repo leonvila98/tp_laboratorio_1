@@ -532,11 +532,9 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 {
     int returnAux =-1;
     int flagSwap;
-    int resultFun;
     int i;
     void* pElement1=NULL;
     void* pElement2=NULL;
-    Node* pBufferNode;
 
     if( this!=NULL &&
         *pFunc!=NULL &&
@@ -553,10 +551,9 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
                 if( ((pFunc(&pElement1,&pElement2) < 0) && order) ||
                     ((pFunc(&pElement1,&pElement2) > 0) && !order) )
                 {
-                    ll_remove(this,i+1);
-                    addNode(this,i,pElement2);
-                    addNode(this,i+1,pElement1);
                     flagSwap=1;
+                    ll_set(this,i+1,pElement1);
+                    ll_set(this,i,pElement2);
                 }
                 returnAux=0;
             }
