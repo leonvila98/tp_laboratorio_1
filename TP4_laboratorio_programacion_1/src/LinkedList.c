@@ -532,6 +532,7 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 {
     int returnAux =-1;
     int flagSwap;
+    int sizeArray;
     int i;
     void* pElement1=NULL;
     void* pElement2=NULL;
@@ -540,20 +541,21 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
         *pFunc!=NULL &&
         (order==0 || order==1))
     {
+        sizeArray=ll_len(this);
         do
         {
             flagSwap=0;
-            for (i=0;i<ll_len(this);i++)
+            for (i=0;i<sizeArray-1;i++)
             {
                 pElement1=ll_get(this,i);
                 pElement2=ll_get(this,i+1);
 
-                if( ((pFunc(&pElement1,&pElement2) < 0) && order) ||
-                    ((pFunc(&pElement1,&pElement2) > 0) && !order) )
+                if( ((pFunc(pElement1,pElement2)<0) && !order) ||
+                    ((pFunc(pElement1,pElement2)>0) && order) )
                 {
-                    flagSwap=1;
-                    ll_set(this,i+1,pElement1);
                     ll_set(this,i,pElement2);
+                    ll_set(this,i+1,pElement1);
+                    flagSwap=1;
                 }
                 returnAux=0;
             }
@@ -561,4 +563,3 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
     }
     return returnAux;
 }
-
